@@ -135,7 +135,7 @@ window.startGame = function(gameId, gameTitle) {
   // After 30 seconds of play, check connectivity
   networkCheckTimeout = setTimeout(() => {
     checkNetworkConnectivity();
-  }, 5000);
+  }, 10000);
   
   // Re-render game lists to update highlighting and button states
   if (typeof window.renderLastPlayed === 'function') {
