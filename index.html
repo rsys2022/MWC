@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Portal - Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="main.js"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <h1 class="text-2xl font-bold text-blue-600">GamePortal</h1>
+            </div>
+            <div class="flex gap-4">
+                <a href="login.html" class="px-4 py-2 text-gray-700 hover:text-blue-600 transition">Sign Up</a>
+                <a href="login.html" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- About Section -->
+        <section class="mb-12 text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Welcome to GamePortal</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Your ultimate destination for premium gaming experiences. We offer a diverse collection of games 
+                across multiple genres, from action-packed adventures to mind-bending puzzles. Join thousands of 
+                gamers and discover your next favorite game today.
+            </p>
+        </section>
+
+        <!-- Games Catalogue -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 mb-6">Games Catalogue</h2>
+            <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Games will be populated by JavaScript -->
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Populate games grid
+        function renderGames() {
+            const grid = document.getElementById('games-grid');
+            if (!grid) return;
+            
+            grid.innerHTML = MOCK_GAMES.map(game => `
+                <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer transform">
+                    <div class="overflow-hidden">
+                        <img src="${game.image}" alt="${game.title}" class="w-full h-48 object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-800 mb-2 hover:text-blue-600 transition-colors duration-300">${game.title}</h3>
+                        <p class="text-sm text-gray-600">${game.description}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', renderGames);
+    </script>
+</body>
+</html>
+
