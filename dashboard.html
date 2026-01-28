@@ -38,9 +38,8 @@
                         id="dashboard-video" 
                         class="w-full h-full object-contain"
                         muted
-                        loop
                     >
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+                        <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
                     
@@ -177,6 +176,36 @@
         </div>
     </div>
 
+    <!-- Thank You Modal (for happy feedback) -->
+    <div id="thank-you-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4 text-center">
+            <div class="text-6xl mb-4">😊</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">Thank You!</h3>
+            <p class="text-gray-600 mb-6">We appreciate your positive feedback!</p>
+            <button 
+                onclick="closeThankYouModal()"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+            >
+                OK
+            </button>
+        </div>
+    </div>
+
+    <!-- Sad Feedback Modal -->
+    <div id="sad-feedback-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md mx-4 text-center">
+            <div class="text-6xl mb-4">😢</div>
+            <h3 class="text-2xl font-bold text-gray-800 mb-2">We're Sorry</h3>
+            <p class="text-gray-600 mb-6">We're sorry for the inconvenience. We'll work to improve your experience.</p>
+            <button 
+                onclick="closeSadFeedbackModal()"
+                class="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition"
+            >
+                OK
+            </button>
+        </div>
+    </div>
+
     <script>
         // Check authentication
         checkAuth();
@@ -200,7 +229,7 @@
                         <img src="${game.image}" alt="${game.title}" class="w-16 h-12 object-cover rounded">
                         <span class="text-sm font-medium ${isPlaying ? 'text-blue-700 font-semibold' : 'text-gray-700'}">${game.title}</span>
                     </div>
-                    <button onclick="startGame(${game.id}, '${game.title}')" class="px-4 py-1 ${isPlaying ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white text-sm rounded transition-colors">
+                    <button ${isPlaying ? '' : `onclick="startGame(${game.id}, '${game.title}')"`} class="px-4 py-1 ${isPlaying ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white text-sm rounded transition-colors" ${isPlaying ? 'disabled' : ''}>
                         ${isPlaying ? 'Playing' : 'Play'}
                     </button>
                 </div>
@@ -221,7 +250,7 @@
                         <img src="${game.image}" alt="${game.title}" class="w-16 h-12 object-cover rounded">
                         <span class="text-sm font-medium ${isPlaying ? 'text-blue-700 font-semibold' : 'text-gray-700'}">${game.title}</span>
                     </div>
-                    <button onclick="startGame(${game.id}, '${game.title}')" class="px-4 py-1 ${isPlaying ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white text-sm rounded transition-colors">
+                    <button ${isPlaying ? '' : `onclick="startGame(${game.id}, '${game.title}')"`} class="px-4 py-1 ${isPlaying ? 'bg-green-600 hover:bg-green-700' : 'bg-blue-600 hover:bg-blue-700'} text-white text-sm rounded transition-colors" ${isPlaying ? 'disabled' : ''}>
                         ${isPlaying ? 'Playing' : 'Play'}
                     </button>
                 </div>
